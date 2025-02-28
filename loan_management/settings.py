@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
+import dj_database_url
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -91,15 +92,20 @@ WSGI_APPLICATION = 'loan_management.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('DB_NAME', 'loan_db'),  # Database Name
+#         'USER': os.getenv('DB_USER', 'postgres'),  # Database User
+#         'PASSWORD': os.getenv('DB_PASSWORD', 'password'),  # Database Password
+#         'HOST': os.getenv('DB_HOST', 'localhost'),  # Database Host
+#         'PORT': os.getenv('DB_PORT', '5432'),  # Default PostgreSQL Port
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'loan_db'),  # Database Name
-        'USER': os.getenv('DB_USER', 'postgres'),  # Database User
-        'PASSWORD': os.getenv('DB_PASSWORD', 'password'),  # Database Password
-        'HOST': os.getenv('DB_HOST', 'localhost'),  # Database Host
-        'PORT': os.getenv('DB_PORT', '5432'),  # Default PostgreSQL Port
-    }
+    'default': dj_database_url.config(default=f"postgres://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}")
 }
 
 AUTH_USER_MODEL = 'users.User'
