@@ -37,7 +37,7 @@ class Loan(models.Model):
 
     def foreclose(self):
         remaining_principal = self.total_amount - (self.monthly_installment * (self.tenure - 1))
-        foreclosure_discount = remaining_principal * Decimal(0.05)  # Convert float to Decimal
+        foreclosure_discount = remaining_principal * Decimal(0.05) 
         final_settlement_amount = remaining_principal - foreclosure_discount
         self.total_amount = final_settlement_amount
         self.status = 'CLOSED'

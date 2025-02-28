@@ -9,10 +9,10 @@ class User(AbstractUser):
     )
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
     otp = models.CharField(max_length=6, blank=True, null=True)  # OTP Field
-    is_verified = models.BooleanField(default=False)  # Email verification flag
+    is_verified = models.BooleanField(default=False)
 
     def generate_otp(self):
         """Generate a random 6-digit OTP and save it."""
-        self.otp = str(random.randint(100000, 999999))  # Example: 854231
+        self.otp = str(random.randint(100000, 999999))
         self.save()
 

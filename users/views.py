@@ -14,8 +14,8 @@ class RegisterView(APIView):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
-            user.generate_otp()  # Generate OTP
-            send_otp_email(user.email, user.otp)  # Send OTP via email
+            user.generate_otp() 
+            send_otp_email(user.email, user.otp)  
             return Response({"message": "OTP sent to email. Verify to activate your account."})
         return Response(serializer.errors)
     
@@ -29,8 +29,8 @@ class VerifyOTPView(APIView):
 
         try:
             user = User.objects.get(email=email, otp=otp)
-            user.is_verified = True  # Mark user as verified
-            user.otp = None  # Clear OTP after successful verification
+            user.is_verified = True
+            user.otp = None
             user.save()
             return Response({"message": "Account verified successfully."})
         except User.DoesNotExist:

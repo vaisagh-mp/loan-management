@@ -119,5 +119,23 @@ Now, visit `http://127.0.0.1:8000/admin/` to log into the Django Admin Panel.
 
 ---
 
+## 📝 Testing Instructions
+
+### 1️ Testing with Postman**
+1.Import the Postman Collection** (Download or generate from the API).
+2.Set `{{base_url}}` to `http://127.0.0.1:8000/` for local testing**.
+3.Register a user** to receive OTP.
+4.Verify OTP** to activate the account.
+5.Login to obtain JWT token** and set it as `Authorization: Bearer <token>`.
+6.Test Loan Creation and Management APIs**.
+7.Foreclose a loan and validate the response**.
+8.Admin can test listing and deleting loans**.
+
+### 2️ Running Automated Tests**
+To run Django unit tests:
+```bash
+python manage.py test
+```
+
 
 
