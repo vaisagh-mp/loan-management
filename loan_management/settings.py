@@ -105,7 +105,7 @@ WSGI_APPLICATION = 'loan_management.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(default=f"postgres://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}")
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 AUTH_USER_MODEL = 'users.User'
