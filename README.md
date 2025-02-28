@@ -131,6 +131,8 @@ Now, visit `http://127.0.0.1:8000/admin/` to log into the Django Admin Panel.
 7.Foreclose a loan and validate the response**.
 8.Admin can test listing and deleting loans**.
 
+Postman Collection : https://www.postman.com/vaisaghmp/workspace/loan-api/collection/26984432-d55c036b-98c1-43c8-bf0a-43dee52a57d8?action=share&creator=26984432
+
 ### 2️ Running Automated Tests**
 To run Django unit tests:
 ```bash
